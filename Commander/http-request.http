@@ -1,9 +1,17 @@
-﻿PUT https://localhost:5001/api/commands/53
+﻿DELETE https://localhost:5001/api/commands/5
 Content-Type: application/json
 
-{
-  "howTo": "Make coffee"
-}
+###
+PATCH https://localhost:5001/api/commands/5
+Content-Type: application/json
+
+[
+  {
+    "op": "replace",
+    "path": "/howTo",
+    "value": "Sjoep sjalala"
+  }
+]
 
 ###
 PUT https://localhost:5001/api/commands/5
