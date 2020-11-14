@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Commander.Migrations
 {
-    [DbContext(typeof(CommanderContext))]
+    [DbContext(typeof(SqlDBContext))]
     partial class CommanderContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

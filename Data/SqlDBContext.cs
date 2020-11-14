@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Commander.Data
 {
-    public class CommanderContext : DbContext
+    public class SqlDBContext : DbContext
     {
-        public CommanderContext(DbContextOptions<CommanderContext> opt) : base(opt) {}
+        public SqlDBContext(DbContextOptions<SqlDBContext> opt) : base(opt) {}
 
         public DbSet<Command> Commands { get; set; }
     }

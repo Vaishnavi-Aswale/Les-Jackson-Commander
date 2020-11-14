@@ -5,11 +5,11 @@ using Commander.Models;
 
 namespace Commander.Data
 {
-    public class SqlCommanderRepo : ICommanderRepo
+    public class CommanderRepo : ICommanderRepo
     {
-        private readonly CommanderContext _context;
+        private readonly SqLiteContext _context;
 
-        public SqlCommanderRepo(CommanderContext context)
+        public CommanderRepo(SqLiteContext context)
         {
             _context = context;
         }
