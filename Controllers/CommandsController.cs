@@ -23,18 +23,18 @@ namespace Commander.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<CommandReadDto>> GetAllCommands()
         {
-            IEnumerable<Command> commandItems = _repo.GetAllCommands();
+            IEnumerable<Command> commandModels = _repo.GetAllCommands();
 
-            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandModels));
         }
 
-        [HttpGet("{id}", Name = "GetCommandById")]
+        [HttpGet("{id}", Name = nameof(GetCommandById))]
         public ActionResult<CommandReadDto> GetCommandById(int id)
         {
-            Command commandItem = _repo.GetCommandById(id);
+            Command commandModel = _repo.GetCommandById(id);
 
-            if (commandItem != null) {
-                return Ok(_mapper.Map<CommandReadDto>(commandItem));
+            if (commandModel != null) {
+                return Ok(_mapper.Map<CommandReadDto>(commandModel));
             }
 
             return NotFound();
@@ -48,7 +48,9 @@ namespace Commander.Controllers
             _repo.CreateCommand(commandModel);
             _repo.SaveChanges();
 
-            return Created($"/api/commands/{commandModel.Id}", _mapper.Map<CommandReadDto>(commandModel));
+            CommandReadDto commandReadDto = _mapper.Map<CommandReadDto>(commandModel);
+
+            return CreatedAtRoute(nameof(GetCommandById), new {commandReadDto.Id}, commandReadDto);
         }
     }
 }

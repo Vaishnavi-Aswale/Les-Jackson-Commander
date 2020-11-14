@@ -1,0 +1,15 @@
+﻿POST https://localhost:5001/api/commands
+Content-Type: application/json
+
+{
+  "howTo": "How to test sjit",
+  "line": "dotnet soep kip"
+}
+
+###
+GET https://localhost:5001/api/commands/4
+Accept: application/json
+
+###
+GET https://localhost:5001/api/commands
+Accept: application/json
