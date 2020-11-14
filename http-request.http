@@ -1,4 +1,22 @@
-﻿POST https://localhost:5001/api/commands
+﻿PUT https://localhost:5001/api/commands/53
+Content-Type: application/json
+
+{
+  "howTo": "Make coffee"
+}
+
+###
+PUT https://localhost:5001/api/commands/5
+Content-Type: application/json
+
+{
+  "howTo": "Make coffee",
+  "line": "Just doo it",
+  "platform": "hahaha"
+}
+
+###
+POST https://localhost:5001/api/commands
 Content-Type: application/json
 
 {
@@ -7,7 +25,17 @@ Content-Type: application/json
 }
 
 ###
-GET https://localhost:5001/api/commands/4
+POST https://localhost:5001/api/commands
+Content-Type: application/json
+
+{
+  "howTo": "How to test sjit",
+  "line": "dotnet soep kip",
+  "platform": "Home"
+}
+
+###
+GET https://localhost:5001/api/commands/5
 Accept: application/json
 
 ###

@@ -33,7 +33,8 @@ namespace Commander.Controllers
         {
             Command commandModel = _repo.GetCommandById(id);
 
-            if (commandModel != null) {
+            if (commandModel != null)
+            {
                 return Ok(_mapper.Map<CommandReadDto>(commandModel));
             }
 
@@ -51,6 +52,23 @@ namespace Commander.Controllers
             CommandReadDto commandReadDto = _mapper.Map<CommandReadDto>(commandModel);
 
             return CreatedAtRoute(nameof(GetCommandById), new {commandReadDto.Id}, commandReadDto);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommand([FromRoute] int id, [FromBody] CommandUpdateDto cmd)
+        {
+            Command commandModel = _repo.GetCommandById(id);
+
+            if (commandModel == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(cmd, commandModel);
+            _repo.UpdateCommand(commandModel);
+            _repo.SaveChanges();
+
+            return NoContent();
         }
     }
 }
